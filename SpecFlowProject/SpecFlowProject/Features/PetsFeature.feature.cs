@@ -303,10 +303,18 @@ this.ScenarioInitialize(scenarioInfo);
 #line 41
  testRunner.When("We created \'PUT\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name",
+                            "Status"});
+                table1.AddRow(new string[] {
+                            "8",
+                            "Frog",
+                            "sold"});
 #line 42
- testRunner.And("Set data for model \'name\' to \'Cat\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I create request body for pet", ((string)(null)), table1, "And ");
 #line hidden
-#line 43
+#line 45
  testRunner.Then("We have new Pet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -322,7 +330,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "DELETE"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("DeleteMethodPetsById", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 46
+#line 48
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -342,16 +350,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 47
+#line 49
  testRunner.Given("Set base url Api", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 48
+#line 50
  testRunner.When("We created request \'DELETE\' to \'/pet/{petId}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 49
- testRunner.And("We set \'petId\' to 4", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 51
+ testRunner.And("We set \'petId\' to \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 50
+#line 52
  testRunner.Then("We get contex with status", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

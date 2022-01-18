@@ -20,6 +20,8 @@
   <ItemGroup>
     <Folder Include="Drivers\" />
     <Folder Include="Hooks\" />
+    <Folder Include="Steps\User\" />
+    <Folder Include="Steps\Store\" />
   </ItemGroup>
 
 </Project>

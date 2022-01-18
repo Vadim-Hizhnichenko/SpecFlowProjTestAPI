@@ -39,12 +39,14 @@ Scenario: PostMethodPetsById
 Scenario: PutMethodPets
 	Given Set base url 
 	When We created 'PUT' request to '/pet'
-	And Set data for model 'name' to 'Cat'
+	And I create request body for pet 
+	| Id | Name | Status |
+	| 8  | Frog | sold   |
 	Then We have new Pet
 
 @DELETE
 Scenario: DeleteMethodPetsById
 	Given  Set base url Api
 	When We created request 'DELETE' to '/pet/{petId}'
-	And We set 'petId' to 4
+	And We set 'petId' to '4'
 	Then We get contex with status 
