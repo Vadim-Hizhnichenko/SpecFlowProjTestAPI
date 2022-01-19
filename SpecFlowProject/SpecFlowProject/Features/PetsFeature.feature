@@ -3,7 +3,7 @@
 
 @GETById
 Scenario: GetMethodPetsById
-	Given I have base pet url
+	Given I have base url
 	When I create 'GET' request to '/pet/{petId}'
 	And I set url segment 'petId' to '9'
 	And I send request to API
@@ -12,41 +12,63 @@ Scenario: GetMethodPetsById
 
 @GETByStatus
 Scenario: GetMethodPetsByStatus
-	Given I have base pet url for this method
-	When We create 'GET' request to '/pet/findByStatus'
+	Given I have base url
+	When I create 'GET' request to '/pet/findByStatus'
 	And I set url parametr 'status' to 'available'
-	And I send request to our API
-	Then I get context  API 
+	And I send request to API
+	Then I get context  API
 
 @POST
 Scenario: PostMethodPets
-	Given I have base pet url for POST 
-	When We create  'POST' request to '/pet'
-	And I send  request to API 
-	Then I get  context 
+	Given I have base url
+	When I create 'POST' request to '/pet'
+	And I send request to API with jsonbody
+	And I send request to API
+	Then I get context request
 
 @POST
 Scenario: PostMethodPetsById
-	Given I have base url for this method 
-	When I created 'POST' request to '/pet/{petId}'
-	And I set url segments  'petId' to '5'
-	And I set url paramet for 'petId' to '5'
-	And I set url parametrs 'name' to 'Banana'
-	And Set last parametr 'status' to 'available'
+	Given I have base url
+	When I create 'POST' request to '/pet/{petId}'
+	And I set url segment 'petId' to '13'
+	And I set url parametr 'petId' to '13'
+	And I set url parametr 'name' to 'Banan'
+	And I set url parametr 'status' to 'available'
+	And I send request to API
+	Then We get some context 
+
+@POST 
+Scenario: PostMethodPetsWithImage
+	Given I have base url
+	When I create 'POST' request with heders for  '/pet/{petId}/uploadImage' 
+	And I set url segments 'petId' to '8'
+	And I set url parametr 'petId' to '8'
+	And I set url parametr 'data' to 'someData'
+	And We set url parametr picture 'file' to 'C:\Users\khyzhnychenko\Desktop\logo.png' 
+	And I send request to API
 	Then We get some context 
 
 @PUT
 Scenario: PutMethodPets
-	Given Set base url 
-	When We created 'PUT' request to '/pet'
+	Given I have base url
+	When I create 'PUT' request to '/pet'
 	And I create request body for pet 
 	| Id | Name | Status |
-	| 8  | Frog | sold   |
+	| 9  | Frog | sold   |
+	And I send request to API
 	Then We have new Pet
+	
 
 @DELETE
 Scenario: DeleteMethodPetsById
-	Given  Set base url Api
-	When We created request 'DELETE' to '/pet/{petId}'
-	And We set 'petId' to '4'
-	Then We get contex with status 
+	Given  I have base url
+	When I create 'POST' request to '/pet/{petId}'
+	And I set url segment 'petId' to '9'
+	And I set url parametr 'petId' to '9'
+	And I set url parametr 'name' to 'Banan'
+	And I set url parametr 'status' to 'available'
+	And I send request to API
+	When I create 'DELETE' request to '/pet/{petId}'
+	And I set url segment 'petId' to '9'
+	And I send request to API
+	Then We get some context 

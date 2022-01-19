@@ -5,9 +5,9 @@ namespace SpecFlowProject.Entity
     public class Category
     {
         [JsonProperty("id")]
-        public long Id { get; set; } = 2;
+        public long Id { get; set; } 
 
         [JsonProperty("name")]
-        public string Name { get; set; } = "First";
+        public string Name { get; set; } 
     }
 }

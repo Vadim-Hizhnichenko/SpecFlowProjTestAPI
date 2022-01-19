@@ -48,6 +48,16 @@ namespace SpecFlowProject.Extensions
             return request;
         }
 
+        public static IRestRequest SetNewFile(this IRestRequest request, ScenarioContext scenarioContext,string name, string fullPath)
+        {
+            request = scenarioContext.Get<RestRequest>("request");
+            request.AddFile(name, fullPath);
+
+            scenarioContext.Remove("request");
+            scenarioContext.Add("request", request);
+            return request;
+        }
+
         
         
     }

@@ -11,6 +11,6 @@ namespace SpecFlowProject.Entity
         public string Type { get; set; }
 
         [JsonProperty("message")]
-        public long Message { get; set; }
+        public string Message { get; set; }
     }
 }
