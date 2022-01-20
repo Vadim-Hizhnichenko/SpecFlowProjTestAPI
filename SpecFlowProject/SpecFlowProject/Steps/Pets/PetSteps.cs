@@ -70,13 +70,6 @@ namespace SpecFlowProject.Steps
         }
 
 
-        [When(@"We create  '(.*)' request to '(.*)'")]
-        public void WhenWeCreateRequestTo(Method type, string endPoint)
-        {
-            _request.CreateRequest(_scenarioContext, type, endPoint);
-        }
-
-
         [When(@"I create request body for pet")]
         public void WhenICreateRequestBodyForPet(Table petTable)
         {

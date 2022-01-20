@@ -17,7 +17,7 @@ namespace SpecFlowProject.Entity
         public long Quantity { get; set; }
 
         [JsonProperty("shipDate")]
-        public DateTimeOffset ShipDate { get; set; }
+        public DateTime ShipDate { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
