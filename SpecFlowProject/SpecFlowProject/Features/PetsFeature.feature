@@ -30,21 +30,21 @@ Scenario: PostMethodPets
 Scenario: PostMethodPetsById
 	Given I have base url
 	When I create 'POST' request to '/pet/{petId}'
-	And I set url segment 'petId' to '13'
-	And I set url parametr 'petId' to '13'
-	And I set url parametr 'name' to 'Banan'
-	And I set url parametr 'status' to 'available'
+	And I set url segment 'petId' to '4'
+	And I set url parametr 'petId' to '4'
+	And I set url parametr 'name' to 'Tomat'
+	And I set url parametr 'status' to 'sold'
 	And I send request to API
 	Then We get some context 
 
 @POST 
 Scenario: PostMethodPetsWithImage
 	Given I have base url
-	When I create 'POST' request with heders for  '/pet/{petId}/uploadImage' 
-	And I set url segments 'petId' to '8'
+	When I create 'POST' request to '/pet/{petId}/uploadImage' 
+	And I set url segment 'petId' to '8'
 	And I set url parametr 'petId' to '8'
 	And I set url parametr 'data' to 'someData'
-	And We set url parametr picture 'file' to 'C:\Users\khyzhnychenko\Desktop\logo.png' 
+	And We set url parametr for picture 'file' to 'C:\Users\khyzhnychenko\Desktop\logo.png' 
 	And I send request to API
 	Then We get some context 
 
@@ -62,11 +62,8 @@ Scenario: PutMethodPets
 @DELETE
 Scenario: DeleteMethodPetsById
 	Given  I have base url
-	When I create 'POST' request to '/pet/{petId}'
-	And I set url segment 'petId' to '9'
-	And I set url parametr 'petId' to '9'
-	And I set url parametr 'name' to 'Banan'
-	And I set url parametr 'status' to 'available'
+	When I create 'POST' request to '/pet'
+	And I send request to API with jsonbody
 	And I send request to API
 	When I create 'DELETE' request to '/pet/{petId}'
 	And I set url segment 'petId' to '9'

@@ -45,26 +45,6 @@ namespace SpecFlowProject.Steps
 
         }
 
-        [When(@"I set url segments '(.*)' to '(.*)'")]
-        public void WhenISetUrlSegmentsTo(string urlSegment, int value)
-        {
-            _request.CreateUrlSegment(_scenarioContext, urlSegment, value);
-        }
-
-
-        [When(@"I set url paramet for '(.*)' to '(.*)'")]
-        public void WhenISetUrlParametForTo(string urlParametr, string value)
-        {
-            _request.CreateUrlParametr(_scenarioContext, urlParametr, value);
-        }
-
-        [When(@"I create '(.*)' request with heders for  '(.*)'")]
-        public void WhenICreateRequestWithHedersFor(Method type, string endPoint)
-        {
-            var res = _request.CreateRequest(_scenarioContext, type, endPoint);
-            res.AddHeader("Accept", "application/json");
-            res.AddHeader("Content-Type", "multipart/form-data");
-        }
 
 
         [When(@"I set url parametr '(.*)' to '(.*)'")]
@@ -80,19 +60,18 @@ namespace SpecFlowProject.Steps
 
         }
 
-        [When(@"We set url parametr picture '(.*)' to '(.*)'")]
-        public void WhenWeSetUrlParametrPictureTo(string name, string value)
-        {
-
-            _request.SetNewFile(_scenarioContext, name, value);
-
-        }
 
         [When(@"I send request to API with jsonbody")]
         public void WhenISendRequestToAPIWithJsonbody()
         {
-            _request.CreateJsonBody(_scenarioContext, new { name = "Lifo" });
+            _request.CreateJsonBody(_scenarioContext, new { name = "Lifo" , id = 4});
 
+        }
+
+        [When(@"We set url parametr for picture '(.*)' to '(.*)'")]
+        public void WhenWeSetUrlParametrForPictureTo(string name, string value)
+        {
+            _request.SetNewFile(_scenarioContext, name, value);
         }
 
 
