@@ -115,7 +115,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.Then("I get context API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get pet by his id \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -163,7 +163,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
- testRunner.Then("I get context  API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I find pet by status his status \'available\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -205,13 +205,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I create \'POST\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
- testRunner.And("I send request to API with jsonbody", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I send request to API with jsonbody params such as the name \'Jaguar\' and id \'11\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 26
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 27
- testRunner.Then("I get context request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("User should see that new pet with \'Jaguar\' name was created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -219,11 +219,11 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("PostMethodPetsById")]
-        [NUnit.Framework.CategoryAttribute("POST")]
+        [NUnit.Framework.CategoryAttribute("POSTById")]
         public virtual void PostMethodPetsById()
         {
             string[] tagsOfScenario = new string[] {
-                    "POST"};
+                    "POSTById"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PostMethodPetsById", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 30
@@ -250,25 +250,31 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 32
- testRunner.When("I create \'POST\' request to \'/pet/{petId}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I create \'POST\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 33
- testRunner.And("I set url segment \'petId\' to \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I send request to API with jsonbody params such as the name \'Wild\' and id \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 34
- testRunner.And("I set url parametr \'petId\' to \'4\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 35
- testRunner.And("I set url parametr \'name\' to \'Tomat\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 36
- testRunner.And("I set url parametr \'status\' to \'sold\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 37
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 35
+ testRunner.When("I create \'POST\' request to \'/pet/{petId}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 36
+ testRunner.And("I set url segment \'petId\' to \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 37
+ testRunner.And("I set url parametr \'petId\' to \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
 #line 38
- testRunner.Then("We get some context", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I set url parametr \'name\' to \'Wild\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 39
+ testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 40
+ testRunner.Then("User should be see code status \'200\' and message \'16\' id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -276,14 +282,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("PostMethodPetsWithImage")]
-        [NUnit.Framework.CategoryAttribute("POST")]
+        [NUnit.Framework.CategoryAttribute("POSTWithImage")]
         public virtual void PostMethodPetsWithImage()
         {
             string[] tagsOfScenario = new string[] {
-                    "POST"};
+                    "POSTWithImage"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PostMethodPetsWithImage", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 41
+#line 43
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -303,30 +309,30 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 42
+#line 44
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 43
+#line 45
  testRunner.When("I create \'POST\' request to \'/pet/{petId}/uploadImage\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 44
+#line 46
  testRunner.And("I set url segment \'petId\' to \'8\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 45
+#line 47
  testRunner.And("I set url parametr \'petId\' to \'8\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 46
+#line 48
  testRunner.And("I set url parametr \'data\' to \'someData\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 47
+#line 49
  testRunner.And("We set url parametr for picture \'file\' to \'C:\\Users\\khyzhnychenko\\Desktop\\logo.pn" +
                         "g\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 48
+#line 50
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 49
- testRunner.Then("We get some context", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 51
+ testRunner.Then("User should be see code status \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -341,7 +347,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "PUT"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PutMethodPets", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 52
+#line 54
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -361,10 +367,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 53
+#line 55
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 54
+#line 56
  testRunner.When("I create \'PUT\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -372,17 +378,17 @@ this.ScenarioInitialize(scenarioInfo);
                             "Name",
                             "Status"});
                 table1.AddRow(new string[] {
-                            "9",
-                            "Frog",
+                            "16",
+                            "Wolf",
                             "sold"});
-#line 55
+#line 57
  testRunner.And("I create request body for pet", ((string)(null)), table1, "And ");
 #line hidden
-#line 58
+#line 60
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 59
- testRunner.Then("We have new Pet", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 61
+ testRunner.Then("User shod be see update model with name \'Wolf\' , status \'sold\' and id \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -390,14 +396,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("DeleteMethodPetsById")]
-        [NUnit.Framework.CategoryAttribute("DELETE")]
+        [NUnit.Framework.CategoryAttribute("DELETEById")]
         public virtual void DeleteMethodPetsById()
         {
             string[] tagsOfScenario = new string[] {
-                    "DELETE"};
+                    "DELETEById"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("DeleteMethodPetsById", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 63
+#line 65
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -417,29 +423,29 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 64
+#line 66
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 65
+#line 67
  testRunner.When("I create \'POST\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 66
- testRunner.And("I send request to API with jsonbody", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 67
- testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 68
- testRunner.When("I create \'DELETE\' request to \'/pet/{petId}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("I send request to API with jsonbody params such as the name \'Jaguar\' and id \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 69
- testRunner.And("I set url segment \'petId\' to \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 70
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 70
+ testRunner.When("I create \'DELETE\' request to \'/pet/{petId}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 71
- testRunner.Then("We get some context", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I set url segment \'petId\' to \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 72
+ testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 73
+ testRunner.Then("User should be see code status \'200\' and message \'9\' id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

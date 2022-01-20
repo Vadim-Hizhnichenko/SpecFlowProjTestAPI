@@ -7,7 +7,7 @@ Scenario: GetMethodPetsById
 	When I create 'GET' request to '/pet/{petId}'
 	And I set url segment 'petId' to '9'
 	And I send request to API
-	Then I get context API
+	Then I get pet by his id '9' 
 	
 
 @GETByStatus
@@ -16,28 +16,30 @@ Scenario: GetMethodPetsByStatus
 	When I create 'GET' request to '/pet/findByStatus'
 	And I set url parametr 'status' to 'available'
 	And I send request to API
-	Then I get context  API
+	Then I find pet by status his status 'available'
 
 @POST
 Scenario: PostMethodPets
 	Given I have base url
 	When I create 'POST' request to '/pet'
-	And I send request to API with jsonbody
+	And I send request to API with jsonbody params such as the name 'Jaguar' and id '11'
 	And I send request to API
-	Then I get context request
+	Then User should see that new pet with 'Jaguar' name was created
 
-@POST
+@POSTById
 Scenario: PostMethodPetsById
 	Given I have base url
-	When I create 'POST' request to '/pet/{petId}'
-	And I set url segment 'petId' to '4'
-	And I set url parametr 'petId' to '4'
-	And I set url parametr 'name' to 'Tomat'
-	And I set url parametr 'status' to 'sold'
+	When I create 'POST' request to '/pet'
+	And I send request to API with jsonbody params such as the name 'Wild' and id '16'
 	And I send request to API
-	Then We get some context 
+	When I create 'POST' request to '/pet/{petId}'
+	And I set url segment 'petId' to '16'
+	And I set url parametr 'petId' to '16'
+	And I set url parametr 'name' to 'Wild'
+	And I send request to API
+	Then User should be see code status '200' and message '16' id
 
-@POST 
+@POSTWithImage
 Scenario: PostMethodPetsWithImage
 	Given I have base url
 	When I create 'POST' request to '/pet/{petId}/uploadImage' 
@@ -46,7 +48,7 @@ Scenario: PostMethodPetsWithImage
 	And I set url parametr 'data' to 'someData'
 	And We set url parametr for picture 'file' to 'C:\Users\khyzhnychenko\Desktop\logo.png' 
 	And I send request to API
-	Then We get some context 
+	Then User should be see code status '200'
 
 @PUT
 Scenario: PutMethodPets
@@ -54,18 +56,18 @@ Scenario: PutMethodPets
 	When I create 'PUT' request to '/pet'
 	And I create request body for pet 
 	| Id | Name | Status |
-	| 9  | Frog | sold   |
+	| 16  | Wolf | sold   |
 	And I send request to API
-	Then We have new Pet
+	Then User shod be see update model with name 'Wolf' , status 'sold' and id '16'
 	
 
-@DELETE
+@DELETEById
 Scenario: DeleteMethodPetsById
 	Given  I have base url
 	When I create 'POST' request to '/pet'
-	And I send request to API with jsonbody
+	And I send request to API with jsonbody params such as the name 'Jaguar' and id '16'
 	And I send request to API
 	When I create 'DELETE' request to '/pet/{petId}'
 	And I set url segment 'petId' to '9'
 	And I send request to API
-	Then We get some context 
+	Then User should be see code status '200' and message '9' id

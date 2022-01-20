@@ -3,10 +3,7 @@ using NUnit.Framework;
 using RestSharp;
 using SpecFlowProject.Entity;
 using SpecFlowProject.Extensions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -46,7 +43,6 @@ namespace SpecFlowProject.Steps
         }
 
 
-
         [When(@"I set url parametr '(.*)' to '(.*)'")]
         public void WhenISetUrlParametrTo(string parametr, string value)
         {
@@ -60,13 +56,12 @@ namespace SpecFlowProject.Steps
 
         }
 
-
-        [When(@"I send request to API with jsonbody")]
-        public void WhenISendRequestToAPIWithJsonbody()
+        [When(@"I send request to API with jsonbody params such as the name '(.*)' and id '(.*)'")]
+        public void WhenISendRequestToAPIWithJsonbodyParamsSuchAsTheNameAndId(string namePet, int petId)
         {
-            _request.CreateJsonBody(_scenarioContext, new { name = "Lifo" , id = 4});
-
+            _request.CreateJsonBody(_scenarioContext, new { name = namePet, id = petId });
         }
+
 
         [When(@"We set url parametr for picture '(.*)' to '(.*)'")]
         public void WhenWeSetUrlParametrForPictureTo(string name, string value)
@@ -81,61 +76,61 @@ namespace SpecFlowProject.Steps
             _request.CreateRequest(_scenarioContext, type, endPoint);
         }
 
-        [When(@"Set data for model '(.*)' to '(.*)'")]
-        public void WhenSetDataForModelTo(string data, string value)
-        {
-            _request.CreateJsonBody(_scenarioContext, value);
-        }
 
         [When(@"I create request body for pet")]
         public void WhenICreateRequestBodyForPet(Table petTable)
         {
-            var model = petTable.CreateInstance<Pet>();
-            var json = JsonConvert.SerializeObject(model);
-            _request.CreateJsonBody(_scenarioContext, json);
+            _request.CreateJsonBody(_scenarioContext, JsonConvert.SerializeObject(petTable.CreateInstance<Pet>()));
         }
 
-        [Then(@"I get context request")]
-        public void ThenIGetContextRequest()
+        [Then(@"User should see that new pet with '(.*)' name was created")]
+        public void ThenUserShouldSeeThatNewPetWithNameWasCreated(string name)
         {
-
             _response.GetResponseContent<Pet>(_scenarioContext);
-            var x = _scenarioContext.Get<Pet>("model").Name;
-            Assert.AreEqual("Lifo", x);
+            Assert.AreEqual(name, _scenarioContext.Get<Pet>("model").Name);
         }
 
-
-        [Then(@"I get context  API")]
-        public void ThenIGetContextAPI()
+        // GET Method. Find pet by status 
+        [Then(@"I find pet by status his status '(.*)'")]
+        public void ThenIFindPetByStatusHisStatus(string status)
         {
             _response.GetResponseContentWithList<Pet>(_scenarioContext);
-            var x = _scenarioContext.Get<List<Pet>>("model")[0].Status;
-
-            Assert.AreEqual("available", x);
+            Assert.AreEqual(status, _scenarioContext.Get<List<Pet>>("model")[0].Status);
         }
 
-        [Then(@"I get context API")]
-        public void WhenIGetContextAPI()
+        [Then(@"I get pet by his id '(.*)'")]
+        public void ThenIGetPetByHisId(int petId)
         {
-
             _response.GetResponseContent<Pet>(_scenarioContext);
-            var x = (int)_scenarioContext.Get<Pet>("model").Id;
-            Assert.AreEqual(9, x);
+            Assert.AreEqual(petId, (int)_scenarioContext.Get<Pet>("model").Id);
         }
-        [Then(@"We get some context")]
-        public void ThenWeGetSomeContext()
+
+        [Then(@"User should be see code status '(.*)' and message '(.*)' id")]
+        public void ThenUserShouldBeSeeCodeStatusAndMessage(int codeStatus, string messId)
         {
             _response.GetResponseContent<CodeType>(_scenarioContext);
-            var x = _scenarioContext.Get<CodeType>("model").Code;
-            Assert.AreEqual(200, x);
+            Assert.AreEqual(codeStatus, _scenarioContext.Get<CodeType>("model").Code);
+            Assert.AreEqual(messId, _scenarioContext.Get<CodeType>("model").Message);
         }
 
-        [Then(@"We have new Pet")]
-        public void ThenWeHaveNewPet()
+
+        [Then(@"User should be see code status '(.*)'")]
+        public void ThenUserShouldBeSeeCodeStatus(int codeStatus)
+        {
+            _response.GetResponseContent<CodeType>(_scenarioContext);
+            Assert.AreEqual(codeStatus, _scenarioContext.Get<CodeType>("model").Code);
+        }
+        
+
+        [Then(@"User shod be see update model with name '(.*)' , status '(.*)' and id '(.*)'")]
+        public void ThenUserShodBeSeeUpdateModelWithNameStatusAndId(string name, string status, int id)
         {
             _response.GetResponseContent<Pet>(_scenarioContext);
-            var x = _scenarioContext.Get<Pet>("model").Name;
-            Assert.AreEqual("Frog", x);
+            Assert.AreEqual(name, _scenarioContext.Get<Pet>("model").Name);
+            Assert.AreEqual(status, _scenarioContext.Get<Pet>("model").Status);
+            Assert.AreEqual(id, _scenarioContext.Get<Pet>("model").Id);
         }
+
+
     }
 }
