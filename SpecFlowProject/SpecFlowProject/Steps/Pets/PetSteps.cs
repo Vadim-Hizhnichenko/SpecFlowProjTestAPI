@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
+using RestSharp.Serialization.Json;
 using SpecFlowProject.Entity;
 using SpecFlowProject.Extensions;
+using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
@@ -129,22 +131,43 @@ namespace SpecFlowProject.Steps
         [When(@"I create request body for pets")]
         public void WhenICreateRequestBodyForPets(Table table)
         {
-            _request.CreateJsonBody(_scenarioContext, JsonConvert.SerializeObject(table.CreateInstance<Pet>()));
+            var model = table.CreateInstance<Pet>();
+
+            _scenarioContext.Remove("model");
+            _scenarioContext.Add("model", model);
+            
+            
         }
         [When(@"I create request body for category")]
         public void WhenICreateRequestBodyForPetss(Table table)
         {
-            var modelCategory = table.CreateInstance<Category>();
-            _scenarioContext.Add("modelCategory", modelCategory);
-        }
 
+            var category = table.CreateInstance<Category>();
+            var petModel = _scenarioContext.Get<Pet>("model");
+            petModel.Category = category;
+            _scenarioContext.Remove("model");
+            _scenarioContext.Add("model", petModel);
+
+        }
         [When(@"I create request body for tags")]
         public void WhenICreateRequestBodyForPetsss(Table table)
         {
-            var modelTags = table.CreateInstance<Category>();
-            _scenarioContext.Add("modelTags", modelTags);
+            var tags = table.CreateInstance<List<Category>>();
+            var petModel = _scenarioContext.Get<Pet>("model");
+            petModel.Tags = tags;
+
+            _scenarioContext.Remove("model");
+            _scenarioContext.Add("model", petModel.Tags[0]);
+
         }
 
+        [When(@"request full body to request")]
+        public void WhenRequestFullBodyToRequest()
+        {
+            var obj = _scenarioContext.Get<Pet>("model");
+            _request.CreateJsonBody(_scenarioContext,obj);
+
+        }
 
 
         [Then(@"User shod see Pet Id '(.*)' NamePet '(.*)' status '(.*)' photo urls '(.*)' categoryId '(.*)' categoryName '(.*)' tagsId '(.*)' tagsName '(.*)'")]
@@ -155,10 +178,9 @@ namespace SpecFlowProject.Steps
             Assert.AreEqual(status, _scenarioContext.Get<Pet>("model").Status);
             Assert.AreEqual(idPet, _scenarioContext.Get<Pet>("model").Id);
             Assert.AreEqual(photo, _scenarioContext.Get<Pet>("model").PhotoUrls[0]);
-            Assert.AreEqual(categoryname, _scenarioContext.Get<Category>("modelCategory").Name);
-            Assert.AreEqual(categotyId, _scenarioContext.Get<Category>("modelCategory").Id);
-            Assert.AreEqual(tagsId, _scenarioContext.Get<Category>("modelTags").Id);
-            Assert.AreEqual(tagsname, _scenarioContext.Get<Category>("modelTags").Name);
+            Assert.AreEqual(categotyId, _scenarioContext.Get<Pet>("model").Category.Id);
+
+
         }
 
 

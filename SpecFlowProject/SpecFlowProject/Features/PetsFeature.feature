@@ -61,10 +61,11 @@ Scenario: PostMethodFillAllFilds
 	| Id | Name |
 	| 2  | cat  |
 	And I create request body for tags
-	| Id | Name |
-	| 5  | name |
+	| Id | Name    |
+	| 1  | qweerty |
+	And request full body to request
 	And I send request to API
-	Then User shod see Pet Id '17' NamePet 'Dog' status 'sold' photo urls 'C:\Users\khyzhnychenko\Desktop\logo.png' categoryId '2' categoryName 'cat' tagsId '5' tagsName 'name'
+	Then User shod see Pet Id '17' NamePet 'Dog' status 'sold' photo urls 'C:\Users\khyzhnychenko\Desktop\logo.png' categoryId '2' categoryName 'cat' tagsId '1' tagsName 'qwerty'
 
 
 
