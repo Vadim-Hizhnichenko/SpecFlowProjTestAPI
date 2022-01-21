@@ -50,6 +50,24 @@ Scenario: PostMethodPetsWithImage
 	And I send request to API
 	Then User should be see code status '200'
 
+@POSTFillAllFild
+Scenario: PostMethodFillAllFilds
+	Given I have base url
+	When I create 'POST' request to '/pet'
+	And I create request body for pets
+	| Id | Name | Status | PhotoUrls                               | 
+	| 17 | Dog  | sold   | C:\Users\khyzhnychenko\Desktop\logo.png |
+	And I create request body for category
+	| Id | Name |
+	| 2  | cat  |
+	And I create request body for tags
+	| Id | Name |
+	| 5  | name |
+	And I send request to API
+	Then User shod see Pet Id '17' NamePet 'Dog' status 'sold' photo urls 'C:\Users\khyzhnychenko\Desktop\logo.png' categoryId '2' categoryName 'cat' tagsId '5' tagsName 'name'
+
+
+
 @PUT
 Scenario: PutMethodPets
 	Given I have base url

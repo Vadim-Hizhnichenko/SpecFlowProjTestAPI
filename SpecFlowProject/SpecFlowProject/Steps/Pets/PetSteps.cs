@@ -74,7 +74,9 @@ namespace SpecFlowProject.Steps
         public void WhenICreateRequestBodyForPet(Table petTable)
         {
             _request.CreateJsonBody(_scenarioContext, JsonConvert.SerializeObject(petTable.CreateInstance<Pet>()));
+
         }
+
 
         [Then(@"User should see that new pet with '(.*)' name was created")]
         public void ThenUserShouldSeeThatNewPetWithNameWasCreated(string name)
@@ -123,6 +125,47 @@ namespace SpecFlowProject.Steps
             Assert.AreEqual(status, _scenarioContext.Get<Pet>("model").Status);
             Assert.AreEqual(id, _scenarioContext.Get<Pet>("model").Id);
         }
+
+        [When(@"I create request body for pets")]
+        public void WhenICreateRequestBodyForPets(Table table)
+        {
+            _request.CreateJsonBody(_scenarioContext, JsonConvert.SerializeObject(table.CreateInstance<Pet>()));
+        }
+        [When(@"I create request body for category")]
+        public void WhenICreateRequestBodyForPetss(Table table)
+        {
+            var modelCategory = table.CreateInstance<Category>();
+            _scenarioContext.Add("modelCategory", modelCategory);
+        }
+
+        [When(@"I create request body for tags")]
+        public void WhenICreateRequestBodyForPetsss(Table table)
+        {
+            var modelTags = table.CreateInstance<Category>();
+            _scenarioContext.Add("modelTags", modelTags);
+        }
+
+
+
+        [Then(@"User shod see Pet Id '(.*)' NamePet '(.*)' status '(.*)' photo urls '(.*)' categoryId '(.*)' categoryName '(.*)' tagsId '(.*)' tagsName '(.*)'")]
+        public void ThenUserShodSeePetIdNamePetStatusPhotoUrlsCategoryIdCategoryNameTagsIdTagsName(int idPet, string petName, string status, string photo, int categotyId, string categoryname, int tagsId, string tagsname)
+        {
+            _response.GetResponseContent<Pet>(_scenarioContext);
+            Assert.AreEqual(petName, _scenarioContext.Get<Pet>("model").Name);
+            Assert.AreEqual(status, _scenarioContext.Get<Pet>("model").Status);
+            Assert.AreEqual(idPet, _scenarioContext.Get<Pet>("model").Id);
+            Assert.AreEqual(photo, _scenarioContext.Get<Pet>("model").PhotoUrls[0]);
+            Assert.AreEqual(categoryname, _scenarioContext.Get<Category>("modelCategory").Name);
+            Assert.AreEqual(categotyId, _scenarioContext.Get<Category>("modelCategory").Id);
+            Assert.AreEqual(tagsId, _scenarioContext.Get<Category>("modelTags").Id);
+            Assert.AreEqual(tagsname, _scenarioContext.Get<Category>("modelTags").Name);
+        }
+
+
+
+
+
+
 
 
     }

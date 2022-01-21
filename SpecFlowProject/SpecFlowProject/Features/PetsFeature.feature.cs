@@ -339,14 +339,14 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("PutMethodPets")]
-        [NUnit.Framework.CategoryAttribute("PUT")]
-        public virtual void PutMethodPets()
+        [NUnit.Framework.DescriptionAttribute("PostMethodFillAllFilds")]
+        [NUnit.Framework.CategoryAttribute("POSTFillAllFild")]
+        public virtual void PostMethodFillAllFilds()
         {
             string[] tagsOfScenario = new string[] {
-                    "PUT"};
+                    "POSTFillAllFild"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PutMethodPets", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PostMethodFillAllFilds", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 54
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -371,39 +371,61 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 56
- testRunner.When("I create \'PUT\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I create \'POST\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "Id",
                             "Name",
-                            "Status"});
+                            "Status",
+                            "PhotoUrls"});
                 table1.AddRow(new string[] {
-                            "16",
-                            "Wolf",
-                            "sold"});
+                            "17",
+                            "Dog",
+                            "sold",
+                            "C:\\Users\\khyzhnychenko\\Desktop\\logo.png"});
 #line 57
- testRunner.And("I create request body for pet", ((string)(null)), table1, "And ");
+ testRunner.And("I create request body for pets", ((string)(null)), table1, "And ");
 #line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name"});
+                table2.AddRow(new string[] {
+                            "2",
+                            "cat"});
 #line 60
+ testRunner.And("I create request body for category", ((string)(null)), table2, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name"});
+                table3.AddRow(new string[] {
+                            "5",
+                            "name"});
+#line 63
+ testRunner.And("I create request body for tags", ((string)(null)), table3, "And ");
+#line hidden
+#line 66
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 61
- testRunner.Then("User shod be see update model with name \'Wolf\' , status \'sold\' and id \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 67
+ testRunner.Then("User shod see Pet Id \'17\' NamePet \'Dog\' status \'sold\' photo urls \'C:\\Users\\khyzhn" +
+                        "ychenko\\Desktop\\logo.png\' categoryId \'2\' categoryName \'cat\' tagsId \'5\' tagsName " +
+                        "\'name\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("DeleteMethodPetsById")]
-        [NUnit.Framework.CategoryAttribute("DELETEById")]
-        public virtual void DeleteMethodPetsById()
+        [NUnit.Framework.DescriptionAttribute("PutMethodPets")]
+        [NUnit.Framework.CategoryAttribute("PUT")]
+        public virtual void PutMethodPets()
         {
             string[] tagsOfScenario = new string[] {
-                    "DELETEById"};
+                    "PUT"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("DeleteMethodPetsById", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 65
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PutMethodPets", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 72
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -423,28 +445,84 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 66
+#line 73
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 67
+#line 74
+ testRunner.When("I create \'PUT\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Id",
+                            "Name",
+                            "Status"});
+                table4.AddRow(new string[] {
+                            "16",
+                            "Wolf",
+                            "sold"});
+#line 75
+ testRunner.And("I create request body for pet", ((string)(null)), table4, "And ");
+#line hidden
+#line 78
+ testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 79
+ testRunner.Then("User shod be see update model with name \'Wolf\' , status \'sold\' and id \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("DeleteMethodPetsById")]
+        [NUnit.Framework.CategoryAttribute("DELETEById")]
+        public virtual void DeleteMethodPetsById()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "DELETEById"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("DeleteMethodPetsById", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 83
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 84
+ testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 85
  testRunner.When("I create \'POST\' request to \'/pet\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 68
+#line 86
  testRunner.And("I send request to API with jsonbody params such as the name \'Jaguar\' and id \'16\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 69
+#line 87
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 70
+#line 88
  testRunner.When("I create \'DELETE\' request to \'/pet/{petId}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 71
+#line 89
  testRunner.And("I set url segment \'petId\' to \'9\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 72
+#line 90
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 73
+#line 91
  testRunner.Then("User should be see code status \'200\' and message \'9\' id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
