@@ -5,9 +5,9 @@
 Scenario: GetMethodPetsById
 	Given I have base url
 	When I create 'GET' request to '/pet/{petId}'
-	And I set url segment 'petId' to '9'
+	And I set url segment 'petId' to '5'
 	And I send request to API
-	Then I get pet by his id '9' 
+	Then I get pet by his id '5' 
 	
 
 @GETByStatus
@@ -84,9 +84,9 @@ Scenario: PutMethodPets
 Scenario: DeleteMethodPetsById
 	Given  I have base url
 	When I create 'POST' request to '/pet'
-	And I send request to API with jsonbody params such as the name 'Jaguar' and id '16'
+	And I send request to API with jsonbody params such as the name 'Jaguar' and id '15'
 	And I send request to API
 	When I create 'DELETE' request to '/pet/{petId}'
-	And I set url segment 'petId' to '9'
+	And I set url segment 'petId' to '15'
 	And I send request to API
-	Then User should be see code status '200' and message '9' id
+	Then User should be see code status '200' and message '15' id

@@ -2,6 +2,7 @@
 using RestSharp;
 using RestSharp.Serialization.Json;
 using System.Collections.Generic;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowProject.Extensions
@@ -12,12 +13,13 @@ namespace SpecFlowProject.Extensions
         {
             var client = scenarionContext.Get<RestClient>("client");
             var request = scenarionContext.Get<RestRequest>("request");
-
             response = client.Execute(request);
 
+            
             scenarionContext.Remove("response");
             scenarionContext.Add("response",response);
             return response;
+        
         }
 
         public static IRestResponse GetResponseContent<T>(this IRestResponse response, ScenarioContext scenarionContext) where T : new()

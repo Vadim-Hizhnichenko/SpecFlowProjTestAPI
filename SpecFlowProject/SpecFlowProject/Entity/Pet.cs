@@ -19,7 +19,7 @@ namespace SpecFlowProject.Entity
         public List<string> PhotoUrls { get; set; }
 
         [JsonProperty("tags")]
-        public List<Category> Tags { get; set; }
+        public List<Category> Tags { get; set; } 
 
         [JsonProperty("status")]
         public string Status { get; set; }

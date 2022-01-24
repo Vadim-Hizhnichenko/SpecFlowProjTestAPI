@@ -6,6 +6,7 @@ using SpecFlowProject.Entity;
 using SpecFlowProject.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -152,12 +153,22 @@ namespace SpecFlowProject.Steps
         [When(@"I create request body for tags")]
         public void WhenICreateRequestBodyForPetsss(Table table)
         {
-            var tags = table.CreateInstance<List<Category>>();
+            //var tags = table.CreateInstance<List<Category>>();
+            //var petModel = _scenarioContext.Get<Pet>("model");
+            //petModel.Tags = tags;
+
+            //_scenarioContext.Remove("model");
+            //_scenarioContext.Add("model", petModel);
+
+            var tags = table.CreateSet<Category>();
+            
             var petModel = _scenarioContext.Get<Pet>("model");
-            petModel.Tags = tags;
+            petModel.Tags = (List<Category>)tags;
 
             _scenarioContext.Remove("model");
-            _scenarioContext.Add("model", petModel.Tags[0]);
+            _scenarioContext.Add("model", petModel);
+
+
 
         }
 
@@ -165,7 +176,7 @@ namespace SpecFlowProject.Steps
         public void WhenRequestFullBodyToRequest()
         {
             var obj = _scenarioContext.Get<Pet>("model");
-            _request.CreateJsonBody(_scenarioContext,obj);
+            _request.CreateJsonBody(_scenarioContext,JsonConvert.SerializeObject(obj));
 
         }
 

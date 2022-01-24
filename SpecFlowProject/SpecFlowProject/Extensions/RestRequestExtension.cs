@@ -9,16 +9,19 @@ namespace SpecFlowProject.Extensions
     public static class RestRequestExtension
     {
 
-        public static IRestRequest CreateRequest(this IRestRequest request, ScenarioContext scenarionContext, Method type, string endPoint)
+        public static RestRequest CreateRequest(this RestRequest request, ScenarioContext scenarionContext, Method type, string endPoint)
         {
-            request = new RestRequest(endPoint, type);
+            request = new RestRequest(endPoint, type)
+            {
+                RequestFormat = DataFormat.Json
+            };
 
             scenarionContext.Remove("request");
             scenarionContext.Add("request", request);
             return request;
         }
 
-        public static IRestRequest CreateUrlSegment(this IRestRequest request, ScenarioContext scenarioContext, string urlSegment, int value)
+        public static RestRequest CreateUrlSegment(this RestRequest request, ScenarioContext scenarioContext, string urlSegment, int value)
         {
             request = scenarioContext.Get<RestRequest>("request");
             request.AddUrlSegment(urlSegment, value);
@@ -28,7 +31,7 @@ namespace SpecFlowProject.Extensions
             return request;
         }
 
-        public static IRestRequest CreateUrlParametr(this IRestRequest request, ScenarioContext scenarioContext, string urlParametr, string value)
+        public static RestRequest CreateUrlParametr(this RestRequest request, ScenarioContext scenarioContext, string urlParametr, string value)
         {
             request = scenarioContext.Get<RestRequest>("request");
             request.AddParameter(urlParametr, value);
@@ -38,11 +41,12 @@ namespace SpecFlowProject.Extensions
             return request;
         }
 
-        public static IRestRequest CreateJsonBody(this IRestRequest request, ScenarioContext scenarioContext, object obj)
+        public static RestRequest CreateJsonBody(this RestRequest request, ScenarioContext scenarioContext, object obj)
         {
             request = scenarioContext.Get<RestRequest>("request");
             request.AddJsonBody(obj);
 
+            
             scenarioContext.Remove("request");
             scenarioContext.Add("request", request);
             return request;
