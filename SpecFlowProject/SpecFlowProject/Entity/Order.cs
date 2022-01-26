@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SpecFlowProject.Configure;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,7 @@ namespace SpecFlowProject.Entity
         public long Quantity { get; set; }
 
         [JsonProperty("shipDate")]
-        public DateTime ShipDate { get; set; }
+        public string ShipDate { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
