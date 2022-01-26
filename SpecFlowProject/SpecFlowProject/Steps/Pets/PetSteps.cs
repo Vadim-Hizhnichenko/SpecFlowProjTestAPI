@@ -39,7 +39,7 @@ namespace SpecFlowProject.Steps
         }
 
         [When(@"I set url segment '(.*)' to '(.*)'")]
-        public void WhenISetUrlSegmentTo(string urlSegment, int value)
+        public void WhenISetUrlSegmentTo(string urlSegment, string value)
         {
             _request.CreateUrlSegment(_scenarioContext, urlSegment, value);
 
@@ -153,12 +153,6 @@ namespace SpecFlowProject.Steps
         [When(@"I create request body for tags")]
         public void WhenICreateRequestBodyForPetsss(Table table)
         {
-            //var tags = table.CreateInstance<List<Category>>();
-            //var petModel = _scenarioContext.Get<Pet>("model");
-            //petModel.Tags = tags;
-
-            //_scenarioContext.Remove("model");
-            //_scenarioContext.Add("model", petModel);
 
             var tags = table.CreateSet<Category>();
             

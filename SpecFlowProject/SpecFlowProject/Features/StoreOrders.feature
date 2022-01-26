@@ -1,5 +1,4 @@
-﻿Feature: StoreOrdersFeature
-
+﻿Feature: StoreOrders
 
 @POST
 Scenario: PostStoreMethod

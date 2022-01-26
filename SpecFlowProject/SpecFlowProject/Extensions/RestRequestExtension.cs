@@ -21,7 +21,7 @@ namespace SpecFlowProject.Extensions
             return request;
         }
 
-        public static RestRequest CreateUrlSegment(this RestRequest request, ScenarioContext scenarioContext, string urlSegment, int value)
+        public static IRestRequest CreateUrlSegment(this IRestRequest request, ScenarioContext scenarioContext, string urlSegment, string value)
         {
             request = scenarioContext.Get<RestRequest>("request");
             request.AddUrlSegment(urlSegment, value);
@@ -31,7 +31,7 @@ namespace SpecFlowProject.Extensions
             return request;
         }
 
-        public static RestRequest CreateUrlParametr(this RestRequest request, ScenarioContext scenarioContext, string urlParametr, string value)
+        public static IRestRequest CreateUrlParametr(this IRestRequest request, ScenarioContext scenarioContext, string urlParametr, string value)
         {
             request = scenarioContext.Get<RestRequest>("request");
             request.AddParameter(urlParametr, value);
@@ -41,7 +41,7 @@ namespace SpecFlowProject.Extensions
             return request;
         }
 
-        public static RestRequest CreateJsonBody(this RestRequest request, ScenarioContext scenarioContext, object obj)
+        public static IRestRequest CreateJsonBody(this IRestRequest request, ScenarioContext scenarioContext, object obj)
         {
             request = scenarioContext.Get<RestRequest>("request");
             request.AddJsonBody(obj);
