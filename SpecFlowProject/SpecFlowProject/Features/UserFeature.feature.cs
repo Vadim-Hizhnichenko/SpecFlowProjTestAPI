@@ -208,7 +208,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 23
- testRunner.Then("User should be see code status \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("User should be see code status \'200\' and \'ok\' message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -283,7 +283,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 34
- testRunner.Then("User should be see code status \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("User should be see code status \'200\' and \'ok\' message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -322,16 +322,43 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 39
- testRunner.When("I create \'GET\' request to \'/user/{username}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I create \'POST\' request to \'/user\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "id",
+                            "username",
+                            "firstName",
+                            "lastName",
+                            "email",
+                            "password",
+                            "phone",
+                            "userStatus"});
+                table10.AddRow(new string[] {
+                            "44",
+                            "newuser",
+                            "First",
+                            "Last",
+                            "Email",
+                            "123456",
+                            "09080707",
+                            "1"});
 #line 40
- testRunner.And("I set url string segment \'username\' to \'name\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I create body request for user", ((string)(null)), table10, "And ");
 #line hidden
-#line 41
+#line 43
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 42
- testRunner.Then("I get user by his name \'name\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 44
+ testRunner.When("I create \'GET\' request to \'/user/{username}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 45
+ testRunner.And("I set url string segment \'username\' to \'newuser\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 46
+ testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 47
+ testRunner.Then("I get user by his name \'newuser\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -346,7 +373,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "GETByLogin"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("GetuserByLoginMethod", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 45
+#line 50
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -366,22 +393,22 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 46
+#line 51
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 47
+#line 52
  testRunner.When("I create \'GET\' request to \'/user/login\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 48
+#line 53
  testRunner.And("I set url parametr \'login\' to \'login\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 49
+#line 54
  testRunner.And("I set url parametr \'password\' to \'password\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 50
+#line 55
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 51
+#line 56
  testRunner.Then("User should be see code status \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -397,7 +424,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "GetUserByLogOutmethod"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("GetuserByLogOutmethod", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 54
+#line 59
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -417,13 +444,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 55
+#line 60
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 56
+#line 61
  testRunner.When("I create \'POST\' request to \'/user\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "id",
                             "username",
                             "firstName",
@@ -432,7 +459,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "password",
                             "phone",
                             "userStatus"});
-                table10.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "21",
                             "lolo",
                             "fi",
@@ -441,20 +468,20 @@ this.ScenarioInitialize(scenarioInfo);
                             "17777",
                             "79997",
                             "1"});
-#line 57
- testRunner.And("I create body request for user", ((string)(null)), table10, "And ");
+#line 62
+ testRunner.And("I create body request for user", ((string)(null)), table11, "And ");
 #line hidden
-#line 60
+#line 65
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 61
+#line 66
  testRunner.When("I create \'GET\' request to \'/user/logout\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 62
+#line 67
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 63
- testRunner.Then("User should be see code status \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 68
+ testRunner.Then("User should be see code status \'200\' and \'ok\' message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -469,7 +496,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "DELETEUserByUserName"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("DeleteMethodByUseName", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 66
+#line 71
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -489,13 +516,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 67
+#line 72
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 68
+#line 73
  testRunner.When("I create \'POST\' request to \'/user\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "id",
                             "username",
                             "firstName",
@@ -504,7 +531,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "password",
                             "phone",
                             "userStatus"});
-                table11.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "7",
                             "fafa",
                             "first",
@@ -513,23 +540,23 @@ this.ScenarioInitialize(scenarioInfo);
                             "12345",
                             "7777777",
                             "1"});
-#line 69
- testRunner.And("I create body request for user", ((string)(null)), table11, "And ");
+#line 74
+ testRunner.And("I create body request for user", ((string)(null)), table12, "And ");
 #line hidden
-#line 72
+#line 77
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 73
+#line 78
  testRunner.When("I create \'DELETE\' request to \'/user/{username}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 74
+#line 79
  testRunner.And("I set url segment \'username\' to \'fafa\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 75
+#line 80
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 76
- testRunner.Then("User should be see code status \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 81
+ testRunner.Then("User should be see code status \'200\' and username \'fafa\' was deleted", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -544,7 +571,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "PUTuserMethodByUsername"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PutByUsernameMethod", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 79
+#line 84
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -564,16 +591,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 80
+#line 85
  testRunner.Given("I have base url", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 81
+#line 86
  testRunner.When("I create \'PUT\' request to \'/user/{username}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 82
+#line 87
  testRunner.And("I set url segment \'username\' to \'Cezar\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "id",
                             "username",
                             "firstName",
@@ -582,7 +609,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "password",
                             "phone",
                             "userStatus"});
-                table12.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "17",
                             "Cezar",
                             "second",
@@ -591,14 +618,14 @@ this.ScenarioInitialize(scenarioInfo);
                             "4434341",
                             "66665",
                             "1"});
-#line 83
- testRunner.And("I create body request for user", ((string)(null)), table12, "And ");
+#line 88
+ testRunner.And("I create body request for user", ((string)(null)), table13, "And ");
 #line hidden
-#line 86
+#line 91
  testRunner.And("I send request to API", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 87
- testRunner.Then("User should be see code status \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 92
+ testRunner.Then("User should be see code status \'200\' and message \'17\' id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

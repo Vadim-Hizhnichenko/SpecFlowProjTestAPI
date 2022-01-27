@@ -52,7 +52,23 @@ namespace SpecFlowProject.Steps.Pets
             Assert.AreEqual(name, _scenarioContext.Get<User>("model").Username);
         }
 
-       
+        [Then(@"User should be see code status '(.*)' and '(.*)' message")]
+        public void ThenUserShouldBeSeeCodeStatusAndMessage(int code, string message)
+        {
+            _response.GetResponseContent<CodeType>(_scenarioContext);
+            Assert.AreEqual(code, _scenarioContext.Get<CodeType>("model").Code);
+            Assert.AreEqual(message, _scenarioContext.Get<CodeType>("model").Message);
+        }
+
+        [Then(@"User should be see code status '(.*)' and username '(.*)' was deleted")]
+        public void ThenUserShouldBeSeeCodeStatusAndUsernameWasDeleted(int code, string usename)
+        {
+            _response.GetResponseContent<CodeType>(_scenarioContext);
+            Assert.AreEqual(code, _scenarioContext.Get<CodeType>("model").Code);
+            Assert.AreEqual(usename, _scenarioContext.Get<CodeType>("model").Message);
+        }
+
+
 
 
     }

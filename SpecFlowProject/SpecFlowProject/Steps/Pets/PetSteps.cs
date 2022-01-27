@@ -117,6 +117,7 @@ namespace SpecFlowProject.Steps
         {
             _response.GetResponseContent<CodeType>(_scenarioContext);
             Assert.AreEqual(codeStatus, _scenarioContext.Get<CodeType>("model").Code);
+
         }
         
 
